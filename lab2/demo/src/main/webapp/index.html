@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Weather Forecast</title>
+</head>
+<body>
+<h1 style="color: crimson">WELCOME TO WEATHER FORECAST SERVICE</h1>
+<h2>Here you will find statistics about forecast in chosen location.</h2>
+<form action="rest/weather_forms"method="POST">
+  <h3>Provide location and number of days to receive statistics</h3>
+  <label for="location">Location</label>
+  <input name="location"/><br/>
+  <label for="numOfDays">Number of Days</label>
+  <input name="numOfDays"/><br/>
+
+  <br/>
+  <input type="submit"value="Submit"/>
+  <br/>
+  <hr>
+  <h3>Click here to get all requests</h3>
+  <button type="submit" formmethod="get" formaction="rest/weather_forms">All request</button>
+</form>
+<hr>
+<form action="rest/weather_forms/request"method="POST">
+  <h3>Provide id to request from database</h3>
+  <label for="requestId">Request ID</label>
+  <input name="requestId"/><br/>
+
+  <br/>
+  <input type="submit"value="Get Request"/>
+</form>
+<hr>
+</body>
+</html>

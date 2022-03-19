@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org" lang="">
+<head>
+    <title>Getting Started: Handling Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link th:rel="stylesheet" th:href="@{/webjars/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.css}"/>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <link th:rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css} "/>
+
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">CURRENCY EXCHANGE RATES</a>
+
+    </div>
+</nav>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-4 mt-5">
+            <form action="#" th:action="@{/form_currency}" th:object="${currencyForm}" method="post">
+
+                <div class="form-group">
+                    <label >FROM:</label>
+                    <select name="fromCurrency">
+                        <option th:each="currencyOpt : ${T(com.example.rest_api.model.Currency).values()}"
+                                th:field="*{fromCurrency}" th:value="${currencyOpt}" th:text="${currencyOpt.displayValue}"></option>
+                    </select>
+                    <p th:if="${#fields.hasErrors('fromCurrency')}" th:errors="*{fromCurrency}">Age Error</p>
+                </div>
+
+                <div class="form-group">
+                    <label>TO:</label>
+                    <select name="toCurrency">
+                        <option th:each="currencyOpt : ${T(com.example.rest_api.model.Currency).values()}"
+                                th:field="*{toCurrency}" th:value="${currencyOpt}" th:text="${currencyOpt.displayValue}"></option>
+                    </select>
+                    <p th:if="${#fields.hasErrors('toCurrency')}" th:errors="*{toCurrency}">Age Error</p>
+
+                </div>
+                <div class="form-group">
+                    <label>AMOUNT: </label>
+                    <input type="number" value="1.0" placeholder="1.0" step="0.01" th:field="*{fromAmount}" />
+
+                    <p th:if="${#fields.hasErrors('fromAmount')}" th:errors="*{fromAmount}">Age Error</p>
+                </div>
+                <div class="form-group">
+                    <label for="date">Date:</label>
+                    <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                        <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1"
+                               th:field="*{time}" id="date" placeholder="Date"/>
+                        <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                            <div class="input-group-text"><i class="fa fa-calendar-alt"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" type="submit">Submit form</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/webjars/momentjs/min/moment.min.js}"></script>
+<script th:src="@{/webjars/momentjs/moment.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.js}"></script>
+<script>
+    $.fn.datetimepicker.Constructor.Default = $.extend({}, $.fn.datetimepicker.Constructor.Default, {
+        icons: {
+            date: 'far fa-calendar',
+            up: 'fas fa-arrow-up',
+            down: 'fas fa-arrow-down',
+            previous: 'fas fa-chevron-left',
+            next: 'fas fa-chevron-right',
+            today: 'far fa-calendar-check-o',
+            clear: 'far fa-trash',
+            close: 'far fa-times'
+        } });
+
+    $('#datetimepicker1').datetimepicker({
+        maxDate: new Date(),
+        format: 'DD/MM/YYYY'
+    });
+</script>
+
+</body>
+</html>
