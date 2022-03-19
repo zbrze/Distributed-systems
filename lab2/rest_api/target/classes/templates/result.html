@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+  <title>Getting Started: Handling Form Submission</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+  <link th:rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css} "/>
+</head>
+<body>
+<h1>Result</h1>
+<p th:text="'From: ' + ${currencyForm.fromCurrency.displayValue}"></p>
+<p th:text="'To: ' + ${currencyForm.toCurrency.displayValue}"></p>
+<p th:text="'Amount: ' + ${currencyForm.fromAmount}"></p>
+<p th:text="'Amount: ' + ${currencyForm.time}"></p>
+</body>
+</html>
