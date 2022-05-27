@@ -239,14 +239,14 @@ if 'ThermostatPrx' not in _M_thermostatController.__dict__:
         def end_getTemperatureScheduledForHour(self, _r):
             return _M_thermostatController.Thermostat._op_getTemperatureScheduledForHour.end(self, _r)
 
-        def scheduleTemperatureForHour(self, day, temperature, hour, context=None):
-            return _M_thermostatController.Thermostat._op_scheduleTemperatureForHour.invoke(self, ((day, temperature, hour), context))
+        def scheduleTemperatureForHour(self, day, hour, temperature, context=None):
+            return _M_thermostatController.Thermostat._op_scheduleTemperatureForHour.invoke(self, ((day, hour, temperature), context))
 
-        def scheduleTemperatureForHourAsync(self, day, temperature, hour, context=None):
-            return _M_thermostatController.Thermostat._op_scheduleTemperatureForHour.invokeAsync(self, ((day, temperature, hour), context))
+        def scheduleTemperatureForHourAsync(self, day, hour, temperature, context=None):
+            return _M_thermostatController.Thermostat._op_scheduleTemperatureForHour.invokeAsync(self, ((day, hour, temperature), context))
 
-        def begin_scheduleTemperatureForHour(self, day, temperature, hour, _response=None, _ex=None, _sent=None, context=None):
-            return _M_thermostatController.Thermostat._op_scheduleTemperatureForHour.begin(self, ((day, temperature, hour), _response, _ex, _sent, context))
+        def begin_scheduleTemperatureForHour(self, day, hour, temperature, _response=None, _ex=None, _sent=None, context=None):
+            return _M_thermostatController.Thermostat._op_scheduleTemperatureForHour.begin(self, ((day, hour, temperature), _response, _ex, _sent, context))
 
         def end_scheduleTemperatureForHour(self, _r):
             return _M_thermostatController.Thermostat._op_scheduleTemperatureForHour.end(self, _r)
@@ -286,6 +286,18 @@ if 'ThermostatPrx' not in _M_thermostatController.__dict__:
 
         def end_changeUnit(self, _r):
             return _M_thermostatController.Thermostat._op_changeUnit.end(self, _r)
+
+        def getCurrentUnit(self, context=None):
+            return _M_thermostatController.Thermostat._op_getCurrentUnit.invoke(self, ((), context))
+
+        def getCurrentUnitAsync(self, context=None):
+            return _M_thermostatController.Thermostat._op_getCurrentUnit.invokeAsync(self, ((), context))
+
+        def begin_getCurrentUnit(self, _response=None, _ex=None, _sent=None, context=None):
+            return _M_thermostatController.Thermostat._op_getCurrentUnit.begin(self, ((), _response, _ex, _sent, context))
+
+        def end_getCurrentUnit(self, _r):
+            return _M_thermostatController.Thermostat._op_getCurrentUnit.end(self, _r)
 
         @staticmethod
         def checkedCast(proxy, facetOrContext=None, context=None):
@@ -328,7 +340,7 @@ if 'ThermostatPrx' not in _M_thermostatController.__dict__:
         def getTemperatureScheduledForHour(self, day, hour, current=None):
             raise NotImplementedError("servant method 'getTemperatureScheduledForHour' not implemented")
 
-        def scheduleTemperatureForHour(self, day, temperature, hour, current=None):
+        def scheduleTemperatureForHour(self, day, hour, temperature, current=None):
             raise NotImplementedError("servant method 'scheduleTemperatureForHour' not implemented")
 
         def scheduleTemperatureForDay(self, day, hoursSchedule, current=None):
@@ -339,6 +351,9 @@ if 'ThermostatPrx' not in _M_thermostatController.__dict__:
 
         def changeUnit(self, unit, current=None):
             raise NotImplementedError("servant method 'changeUnit' not implemented")
+
+        def getCurrentUnit(self, current=None):
+            raise NotImplementedError("servant method 'getCurrentUnit' not implemented")
 
         def __str__(self):
             return IcePy.stringify(self, _M_thermostatController._t_ThermostatDisp)
@@ -352,10 +367,11 @@ if 'ThermostatPrx' not in _M_thermostatController.__dict__:
     Thermostat._op_getWeekSchedule = IcePy.Operation('getWeekSchedule', Ice.OperationMode.Idempotent, Ice.OperationMode.Idempotent, False, None, (), (), (), ((), _M_thermostatController._t_weekSchedule, False, 0), ())
     Thermostat._op_getDaySchedule = IcePy.Operation('getDaySchedule', Ice.OperationMode.Idempotent, Ice.OperationMode.Idempotent, False, None, (), (((), _M_thermostatController._t_dayOfWeek, False, 0),), (), ((), _M_thermostatController._t_DaySchedule, False, 0), ())
     Thermostat._op_getTemperatureScheduledForHour = IcePy.Operation('getTemperatureScheduledForHour', Ice.OperationMode.Idempotent, Ice.OperationMode.Idempotent, False, None, (), (((), _M_thermostatController._t_dayOfWeek, False, 0), ((), IcePy._t_int, False, 0)), (), ((), IcePy._t_float, False, 0), (_M_thermostatController._t_IncorrectHourException,))
-    Thermostat._op_scheduleTemperatureForHour = IcePy.Operation('scheduleTemperatureForHour', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (((), _M_thermostatController._t_dayOfWeek, False, 0), ((), IcePy._t_float, False, 0), ((), IcePy._t_int, False, 0)), (), None, (_M_thermostatController._t_IncorrectHourException,))
+    Thermostat._op_scheduleTemperatureForHour = IcePy.Operation('scheduleTemperatureForHour', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (((), _M_thermostatController._t_dayOfWeek, False, 0), ((), IcePy._t_int, False, 0), ((), IcePy._t_float, False, 0)), (), None, (_M_thermostatController._t_IncorrectHourException,))
     Thermostat._op_scheduleTemperatureForDay = IcePy.Operation('scheduleTemperatureForDay', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (((), _M_thermostatController._t_dayOfWeek, False, 0), ((), _M_thermostatController._t_hoursSchedule, False, 0)), (), None, (_M_thermostatController._t_NoInputException, _M_thermostatController._t_IncorrectHourException))
     Thermostat._op_setCurrentTemperature = IcePy.Operation('setCurrentTemperature', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (((), IcePy._t_float, False, 0),), (), None, ())
     Thermostat._op_changeUnit = IcePy.Operation('changeUnit', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (((), _M_thermostatController._t_temperatureUnits, False, 0),), (), None, ())
+    Thermostat._op_getCurrentUnit = IcePy.Operation('getCurrentUnit', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (), (), ((), _M_thermostatController._t_temperatureUnits, False, 0), ())
 
     _M_thermostatController.Thermostat = Thermostat
     del Thermostat

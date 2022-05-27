@@ -387,6 +387,43 @@ public interface ThermostatPrx extends com.zeroc.Ice.ObjectPrx
         return f;
     }
 
+    default temperatureUnits getCurrentUnit()
+    {
+        return getCurrentUnit(com.zeroc.Ice.ObjectPrx.noExplicitContext);
+    }
+
+    default temperatureUnits getCurrentUnit(java.util.Map<String, String> context)
+    {
+        return _iceI_getCurrentUnitAsync(context, true).waitForResponse();
+    }
+
+    default java.util.concurrent.CompletableFuture<temperatureUnits> getCurrentUnitAsync()
+    {
+        return _iceI_getCurrentUnitAsync(com.zeroc.Ice.ObjectPrx.noExplicitContext, false);
+    }
+
+    default java.util.concurrent.CompletableFuture<temperatureUnits> getCurrentUnitAsync(java.util.Map<String, String> context)
+    {
+        return _iceI_getCurrentUnitAsync(context, false);
+    }
+
+    /**
+     * @hidden
+     * @param context -
+     * @param sync -
+     * @return -
+     **/
+    default com.zeroc.IceInternal.OutgoingAsync<temperatureUnits> _iceI_getCurrentUnitAsync(java.util.Map<String, String> context, boolean sync)
+    {
+        com.zeroc.IceInternal.OutgoingAsync<temperatureUnits> f = new com.zeroc.IceInternal.OutgoingAsync<>(this, "getCurrentUnit", null, sync, null);
+        f.invoke(true, context, null, null, istr -> {
+                     temperatureUnits ret;
+                     ret = temperatureUnits.ice_read(istr);
+                     return ret;
+                 });
+        return f;
+    }
+
     /**
      * Contacts the remote server to verify that the object implements this type.
      * Raises a local exception if a communication error occurs.

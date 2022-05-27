@@ -1,6 +1,6 @@
 
-#ifndef SMARTHOME_ICE
-#define SMARTHOME_ICE
+#ifndef THERMOSTAT_ICE
+#define THERMOSTAT_ICE
 
 
 module thermostatController{
@@ -37,6 +37,7 @@ enum dayOfWeek { MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY}
         void scheduleTemperatureForDay(dayOfWeek day, hoursSchedule hoursSchedule) throws NoInputException, IncorrectHourException;
         void setCurrentTemperature(float temperature);
         void changeUnit(temperatureUnits unit);
+        temperatureUnits getCurrentUnit();
     };
 
 };

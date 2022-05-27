@@ -24,7 +24,7 @@ public interface Flowerpot extends com.zeroc.Ice.Object
 
     lightPowerLevel getCurrentLightPowerLevel(com.zeroc.Ice.Current current);
 
-    void setLightPowerLeveL(lightPowerLevel powerLevel, com.zeroc.Ice.Current current)
+    void setLightPowerLevel(lightPowerLevel powerLevel, com.zeroc.Ice.Current current)
         throws OverdryError;
 
     /** @hidden */
@@ -115,7 +115,7 @@ public interface Flowerpot extends com.zeroc.Ice.Object
      * @return -
      * @throws com.zeroc.Ice.UserException -
     **/
-    static java.util.concurrent.CompletionStage<com.zeroc.Ice.OutputStream> _iceD_setLightPowerLeveL(Flowerpot obj, final com.zeroc.IceInternal.Incoming inS, com.zeroc.Ice.Current current)
+    static java.util.concurrent.CompletionStage<com.zeroc.Ice.OutputStream> _iceD_setLightPowerLevel(Flowerpot obj, final com.zeroc.IceInternal.Incoming inS, com.zeroc.Ice.Current current)
         throws com.zeroc.Ice.UserException
     {
         com.zeroc.Ice.Object._iceCheckMode(null, current.mode);
@@ -123,7 +123,7 @@ public interface Flowerpot extends com.zeroc.Ice.Object
         lightPowerLevel iceP_powerLevel;
         iceP_powerLevel = lightPowerLevel.ice_read(istr);
         inS.endReadParams();
-        obj.setLightPowerLeveL(iceP_powerLevel, current);
+        obj.setLightPowerLevel(iceP_powerLevel, current);
         return inS.setResult(inS.writeEmptyParams());
     }
 
@@ -136,7 +136,7 @@ public interface Flowerpot extends com.zeroc.Ice.Object
         "ice_ids",
         "ice_isA",
         "ice_ping",
-        "setLightPowerLeveL",
+        "setLightPowerLevel",
         "water"
     };
 
@@ -179,7 +179,7 @@ public interface Flowerpot extends com.zeroc.Ice.Object
             }
             case 6:
             {
-                return _iceD_setLightPowerLeveL(this, in, current);
+                return _iceD_setLightPowerLevel(this, in, current);
             }
             case 7:
             {

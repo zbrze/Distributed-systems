@@ -24,7 +24,7 @@ public class FlowerpotI implements Flowerpot {
     }
 
     @Override
-    public void setLightPowerLeveL(lightPowerLevel powerLevel, Current current) throws OverdryError {
+    public void setLightPowerLevel(lightPowerLevel powerLevel, Current current) throws OverdryError {
         if(this.lightPowerLevel.value() < powerLevel.value()){
             if(this.humidityPercentage - 15 < 0) throw new OverdryError();
             this.humidityPercentage -= 15;

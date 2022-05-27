@@ -124,17 +124,17 @@ if 'FlowerpotPrx' not in _M_flowerpotController.__dict__:
         def end_getCurrentLightPowerLevel(self, _r):
             return _M_flowerpotController.Flowerpot._op_getCurrentLightPowerLevel.end(self, _r)
 
-        def setLightPowerLeveL(self, powerLevel, context=None):
-            return _M_flowerpotController.Flowerpot._op_setLightPowerLeveL.invoke(self, ((powerLevel, ), context))
+        def setLightPowerLevel(self, powerLevel, context=None):
+            return _M_flowerpotController.Flowerpot._op_setLightPowerLevel.invoke(self, ((powerLevel, ), context))
 
-        def setLightPowerLeveLAsync(self, powerLevel, context=None):
-            return _M_flowerpotController.Flowerpot._op_setLightPowerLeveL.invokeAsync(self, ((powerLevel, ), context))
+        def setLightPowerLevelAsync(self, powerLevel, context=None):
+            return _M_flowerpotController.Flowerpot._op_setLightPowerLevel.invokeAsync(self, ((powerLevel, ), context))
 
-        def begin_setLightPowerLeveL(self, powerLevel, _response=None, _ex=None, _sent=None, context=None):
-            return _M_flowerpotController.Flowerpot._op_setLightPowerLeveL.begin(self, ((powerLevel, ), _response, _ex, _sent, context))
+        def begin_setLightPowerLevel(self, powerLevel, _response=None, _ex=None, _sent=None, context=None):
+            return _M_flowerpotController.Flowerpot._op_setLightPowerLevel.begin(self, ((powerLevel, ), _response, _ex, _sent, context))
 
-        def end_setLightPowerLeveL(self, _r):
-            return _M_flowerpotController.Flowerpot._op_setLightPowerLeveL.end(self, _r)
+        def end_setLightPowerLevel(self, _r):
+            return _M_flowerpotController.Flowerpot._op_setLightPowerLevel.end(self, _r)
 
         @staticmethod
         def checkedCast(proxy, facetOrContext=None, context=None):
@@ -174,8 +174,8 @@ if 'FlowerpotPrx' not in _M_flowerpotController.__dict__:
         def getCurrentLightPowerLevel(self, current=None):
             raise NotImplementedError("servant method 'getCurrentLightPowerLevel' not implemented")
 
-        def setLightPowerLeveL(self, powerLevel, current=None):
-            raise NotImplementedError("servant method 'setLightPowerLeveL' not implemented")
+        def setLightPowerLevel(self, powerLevel, current=None):
+            raise NotImplementedError("servant method 'setLightPowerLevel' not implemented")
 
         def __str__(self):
             return IcePy.stringify(self, _M_flowerpotController._t_FlowerpotDisp)
@@ -188,7 +188,7 @@ if 'FlowerpotPrx' not in _M_flowerpotController.__dict__:
     Flowerpot._op_getCurrentHumidity = IcePy.Operation('getCurrentHumidity', Ice.OperationMode.Idempotent, Ice.OperationMode.Idempotent, False, None, (), (), (), ((), IcePy._t_int, False, 0), ())
     Flowerpot._op_water = IcePy.Operation('water', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (((), IcePy._t_int, False, 0),), (), None, (_M_flowerpotController._t_OverwaterError,))
     Flowerpot._op_getCurrentLightPowerLevel = IcePy.Operation('getCurrentLightPowerLevel', Ice.OperationMode.Idempotent, Ice.OperationMode.Idempotent, False, None, (), (), (), ((), _M_flowerpotController._t_lightPowerLevel, False, 0), ())
-    Flowerpot._op_setLightPowerLeveL = IcePy.Operation('setLightPowerLeveL', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (((), _M_flowerpotController._t_lightPowerLevel, False, 0),), (), None, (_M_flowerpotController._t_OverdryError,))
+    Flowerpot._op_setLightPowerLevel = IcePy.Operation('setLightPowerLevel', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (((), _M_flowerpotController._t_lightPowerLevel, False, 0),), (), None, (_M_flowerpotController._t_OverdryError,))
 
     _M_flowerpotController.Flowerpot = Flowerpot
     del Flowerpot

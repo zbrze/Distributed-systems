@@ -17,13 +17,15 @@ package airPurifierController;
 
 public interface AirPurifierWithHumidifier extends AirPurifier
 {
-    int getHumidityPercentage(com.zeroc.Ice.Current current);
+    int getHumidityPercentage(com.zeroc.Ice.Current current)
+        throws TurnedOffException;
 
     int getWaterTankLevel(com.zeroc.Ice.Current current);
 
     void refillTank(com.zeroc.Ice.Current current);
 
-    void turnOnHumidifierMode(com.zeroc.Ice.Current current);
+    void turnOnHumidifierMode(com.zeroc.Ice.Current current)
+        throws EmptyWaterTankException;
 
     void turnOffHumidifierMode(com.zeroc.Ice.Current current);
 
@@ -60,8 +62,10 @@ public interface AirPurifierWithHumidifier extends AirPurifier
      * @param inS -
      * @param current -
      * @return -
+     * @throws com.zeroc.Ice.UserException -
     **/
     static java.util.concurrent.CompletionStage<com.zeroc.Ice.OutputStream> _iceD_getHumidityPercentage(AirPurifierWithHumidifier obj, final com.zeroc.IceInternal.Incoming inS, com.zeroc.Ice.Current current)
+        throws com.zeroc.Ice.UserException
     {
         com.zeroc.Ice.Object._iceCheckMode(com.zeroc.Ice.OperationMode.Idempotent, current.mode);
         inS.readEmptyParams();
@@ -111,8 +115,10 @@ public interface AirPurifierWithHumidifier extends AirPurifier
      * @param inS -
      * @param current -
      * @return -
+     * @throws com.zeroc.Ice.UserException -
     **/
     static java.util.concurrent.CompletionStage<com.zeroc.Ice.OutputStream> _iceD_turnOnHumidifierMode(AirPurifierWithHumidifier obj, final com.zeroc.IceInternal.Incoming inS, com.zeroc.Ice.Current current)
+        throws com.zeroc.Ice.UserException
     {
         com.zeroc.Ice.Object._iceCheckMode(com.zeroc.Ice.OperationMode.Idempotent, current.mode);
         inS.readEmptyParams();

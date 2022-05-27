@@ -17,9 +17,9 @@ package airPurifierController;
 
 public enum powerLevel implements java.io.Serializable
 {
-    LOW(0),
-    MEDIUM(1),
-    HIGH(2);
+    LOW(1),
+    MEDIUM(2),
+    HIGH(3);
 
     public int value()
     {
@@ -30,11 +30,11 @@ public enum powerLevel implements java.io.Serializable
     {
         switch(v)
         {
-        case 0:
-            return LOW;
         case 1:
-            return MEDIUM;
+            return LOW;
         case 2:
+            return MEDIUM;
+        case 3:
             return HIGH;
         }
         return null;
@@ -47,24 +47,24 @@ public enum powerLevel implements java.io.Serializable
 
     public void ice_write(com.zeroc.Ice.OutputStream ostr)
     {
-        ostr.writeEnum(_value, 2);
+        ostr.writeEnum(_value, 3);
     }
 
     public static void ice_write(com.zeroc.Ice.OutputStream ostr, powerLevel v)
     {
         if(v == null)
         {
-            ostr.writeEnum(airPurifierController.powerLevel.LOW.value(), 2);
+            ostr.writeEnum(airPurifierController.powerLevel.LOW.value(), 3);
         }
         else
         {
-            ostr.writeEnum(v.value(), 2);
+            ostr.writeEnum(v.value(), 3);
         }
     }
 
     public static powerLevel ice_read(com.zeroc.Ice.InputStream istr)
     {
-        int v = istr.readEnum(2);
+        int v = istr.readEnum(3);
         return validate(v);
     }
 

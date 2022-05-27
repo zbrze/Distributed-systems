@@ -1,6 +1,7 @@
 package server;
 
 import airPurifierController.AirPurifier;
+import airPurifierController.IncorrectInputException;
 import airPurifierController.WornoutFilterException;
 import airPurifierController.airQuality;
 import airPurifierController.powerLevel;
@@ -29,8 +30,7 @@ public class AirPurifierI implements AirPurifier {
     }
 
     @Override
-    public void setCurrentPower(airPurifierController.powerLevel powerLevel, Current current) throws WornoutFilterException {
-
+    public void setCurrentPower(airPurifierController.powerLevel powerLevel, Current current) throws WornoutFilterException{
         switch (powerLevel){
             case HIGH:
                 if(this.filterWearPercentage + 15 > 100 ) throw new WornoutFilterException();

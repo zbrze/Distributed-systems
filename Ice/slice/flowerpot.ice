@@ -1,7 +1,7 @@
 
 
-#ifndef SMARTHOME_ICE
-#define SMARTHOME_ICE
+#ifndef FLOWERPOTCONTROLLER_ICE
+#define FLOWERPOTCONTROLLER_ICE
 
 module flowerpotController{
         enum lightPowerLevel { LOW, MEDIUM, HIGH };
@@ -19,7 +19,7 @@ module flowerpotController{
         idempotent int getCurrentHumidity();
         void water(int mililiters) throws OverwaterError ;
         idempotent lightPowerLevel getCurrentLightPowerLevel();
-        void setLightPowerLeveL(lightPowerLevel powerLevel) throws OverdryError ;
+        void setLightPowerLevel(lightPowerLevel powerLevel) throws OverdryError ;
     };
 };
 

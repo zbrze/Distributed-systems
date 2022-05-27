@@ -146,18 +146,18 @@ public interface FlowerpotPrx extends com.zeroc.Ice.ObjectPrx
         return f;
     }
 
-    default void setLightPowerLeveL(lightPowerLevel powerLevel)
+    default void setLightPowerLevel(lightPowerLevel powerLevel)
         throws OverdryError
     {
-        setLightPowerLeveL(powerLevel, com.zeroc.Ice.ObjectPrx.noExplicitContext);
+        setLightPowerLevel(powerLevel, com.zeroc.Ice.ObjectPrx.noExplicitContext);
     }
 
-    default void setLightPowerLeveL(lightPowerLevel powerLevel, java.util.Map<String, String> context)
+    default void setLightPowerLevel(lightPowerLevel powerLevel, java.util.Map<String, String> context)
         throws OverdryError
     {
         try
         {
-            _iceI_setLightPowerLeveLAsync(powerLevel, context, true).waitForResponseOrUserEx();
+            _iceI_setLightPowerLevelAsync(powerLevel, context, true).waitForResponseOrUserEx();
         }
         catch(OverdryError ex)
         {
@@ -169,14 +169,14 @@ public interface FlowerpotPrx extends com.zeroc.Ice.ObjectPrx
         }
     }
 
-    default java.util.concurrent.CompletableFuture<Void> setLightPowerLeveLAsync(lightPowerLevel powerLevel)
+    default java.util.concurrent.CompletableFuture<Void> setLightPowerLevelAsync(lightPowerLevel powerLevel)
     {
-        return _iceI_setLightPowerLeveLAsync(powerLevel, com.zeroc.Ice.ObjectPrx.noExplicitContext, false);
+        return _iceI_setLightPowerLevelAsync(powerLevel, com.zeroc.Ice.ObjectPrx.noExplicitContext, false);
     }
 
-    default java.util.concurrent.CompletableFuture<Void> setLightPowerLeveLAsync(lightPowerLevel powerLevel, java.util.Map<String, String> context)
+    default java.util.concurrent.CompletableFuture<Void> setLightPowerLevelAsync(lightPowerLevel powerLevel, java.util.Map<String, String> context)
     {
-        return _iceI_setLightPowerLeveLAsync(powerLevel, context, false);
+        return _iceI_setLightPowerLevelAsync(powerLevel, context, false);
     }
 
     /**
@@ -186,9 +186,9 @@ public interface FlowerpotPrx extends com.zeroc.Ice.ObjectPrx
      * @param sync -
      * @return -
      **/
-    default com.zeroc.IceInternal.OutgoingAsync<Void> _iceI_setLightPowerLeveLAsync(lightPowerLevel iceP_powerLevel, java.util.Map<String, String> context, boolean sync)
+    default com.zeroc.IceInternal.OutgoingAsync<Void> _iceI_setLightPowerLevelAsync(lightPowerLevel iceP_powerLevel, java.util.Map<String, String> context, boolean sync)
     {
-        com.zeroc.IceInternal.OutgoingAsync<Void> f = new com.zeroc.IceInternal.OutgoingAsync<>(this, "setLightPowerLeveL", null, sync, _iceE_setLightPowerLeveL);
+        com.zeroc.IceInternal.OutgoingAsync<Void> f = new com.zeroc.IceInternal.OutgoingAsync<>(this, "setLightPowerLevel", null, sync, _iceE_setLightPowerLevel);
         f.invoke(true, context, null, ostr -> {
                      lightPowerLevel.ice_write(ostr, iceP_powerLevel);
                  }, null);
@@ -196,7 +196,7 @@ public interface FlowerpotPrx extends com.zeroc.Ice.ObjectPrx
     }
 
     /** @hidden */
-    static final Class<?>[] _iceE_setLightPowerLeveL =
+    static final Class<?>[] _iceE_setLightPowerLevel =
     {
         OverdryError.class
     };

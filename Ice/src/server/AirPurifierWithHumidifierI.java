@@ -1,9 +1,6 @@
 package server;
 
-import airPurifierController.AirPurifierWithHumidifier;
-import airPurifierController.WornoutFilterException;
-import airPurifierController.airQuality;
-import airPurifierController.powerLevel;
+import airPurifierController.*;
 import com.zeroc.Ice.Current;
 
 public class AirPurifierWithHumidifierI extends AirPurifierI implements AirPurifierWithHumidifier{
@@ -13,24 +10,26 @@ public class AirPurifierWithHumidifierI extends AirPurifierI implements AirPurif
 
 
     @Override
-    public int getHumidityPercentage(Current current) {
+    public int getHumidityPercentage(Current current) throws TurnedOffException {
+
+        if(!this.humidifierTurnedOn) throw new TurnedOffException();
         return this.humidityPercentage;
     }
 
 
     @Override
-    public int getWaterTankLevel(Current current) {
+    public int getWaterTankLevel(Current current){
         return this.waterTankLevel;
     }
 
     @Override
-    public void refillTank(Current current) {
+    public void refillTank(Current current){
         this.waterTankLevel = 100;
     }
 
     @Override
-    public void turnOnHumidifierMode(Current current) {
-        if(waterTankLevel == 0)
+    public void turnOnHumidifierMode(Current current) throws EmptyWaterTankException {
+        if(waterTankLevel == 0) throw new EmptyWaterTankException();
         this.humidifierTurnedOn = true;
         this.waterTankLevel -= 10;
     }

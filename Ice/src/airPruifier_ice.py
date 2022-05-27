@@ -57,10 +57,10 @@ if 'powerLevel' not in _M_airPurifierController.__dict__:
             return None
         valueOf = classmethod(valueOf)
 
-    powerLevel.LOW = powerLevel("LOW", 0)
-    powerLevel.MEDIUM = powerLevel("MEDIUM", 1)
-    powerLevel.HIGH = powerLevel("HIGH", 2)
-    powerLevel._enumerators = { 0:powerLevel.LOW, 1:powerLevel.MEDIUM, 2:powerLevel.HIGH }
+    powerLevel.LOW = powerLevel("LOW", 1)
+    powerLevel.MEDIUM = powerLevel("MEDIUM", 2)
+    powerLevel.HIGH = powerLevel("HIGH", 3)
+    powerLevel._enumerators = { 1:powerLevel.LOW, 2:powerLevel.MEDIUM, 3:powerLevel.HIGH }
 
     _M_airPurifierController._t_powerLevel = IcePy.defineEnum('::airPurifierController::powerLevel', powerLevel, (), powerLevel._enumerators)
 
@@ -85,6 +85,44 @@ if 'WornoutFilterException' not in _M_airPurifierController.__dict__:
 
     _M_airPurifierController.WornoutFilterException = WornoutFilterException
     del WornoutFilterException
+
+if 'IncorrectInputException' not in _M_airPurifierController.__dict__:
+    _M_airPurifierController.IncorrectInputException = Ice.createTempClass()
+    class IncorrectInputException(Ice.UserException):
+        def __init__(self):
+            pass
+
+        def __str__(self):
+            return IcePy.stringifyException(self)
+
+        __repr__ = __str__
+
+        _ice_id = '::airPurifierController::IncorrectInputException'
+
+    _M_airPurifierController._t_IncorrectInputException = IcePy.defineException('::airPurifierController::IncorrectInputException', IncorrectInputException, (), False, None, ())
+    IncorrectInputException._ice_type = _M_airPurifierController._t_IncorrectInputException
+
+    _M_airPurifierController.IncorrectInputException = IncorrectInputException
+    del IncorrectInputException
+
+if 'TurnedOffException' not in _M_airPurifierController.__dict__:
+    _M_airPurifierController.TurnedOffException = Ice.createTempClass()
+    class TurnedOffException(Ice.UserException):
+        def __init__(self):
+            pass
+
+        def __str__(self):
+            return IcePy.stringifyException(self)
+
+        __repr__ = __str__
+
+        _ice_id = '::airPurifierController::TurnedOffException'
+
+    _M_airPurifierController._t_TurnedOffException = IcePy.defineException('::airPurifierController::TurnedOffException', TurnedOffException, (), False, None, ())
+    TurnedOffException._ice_type = _M_airPurifierController._t_TurnedOffException
+
+    _M_airPurifierController.TurnedOffException = TurnedOffException
+    del TurnedOffException
 
 if 'EmptyWaterTankException' not in _M_airPurifierController.__dict__:
     _M_airPurifierController.EmptyWaterTankException = Ice.createTempClass()
@@ -365,10 +403,10 @@ if 'AirPurifierWithHumidifierPrx' not in _M_airPurifierController.__dict__:
     _M_airPurifierController._t_AirPurifierWithHumidifierDisp = IcePy.defineClass('::airPurifierController::AirPurifierWithHumidifier', AirPurifierWithHumidifier, (), None, (_M_airPurifierController._t_AirPurifierDisp,))
     AirPurifierWithHumidifier._ice_type = _M_airPurifierController._t_AirPurifierWithHumidifierDisp
 
-    AirPurifierWithHumidifier._op_getHumidityPercentage = IcePy.Operation('getHumidityPercentage', Ice.OperationMode.Idempotent, Ice.OperationMode.Idempotent, False, None, (), (), (), ((), IcePy._t_int, False, 0), ())
+    AirPurifierWithHumidifier._op_getHumidityPercentage = IcePy.Operation('getHumidityPercentage', Ice.OperationMode.Idempotent, Ice.OperationMode.Idempotent, False, None, (), (), (), ((), IcePy._t_int, False, 0), (_M_airPurifierController._t_TurnedOffException,))
     AirPurifierWithHumidifier._op_getWaterTankLevel = IcePy.Operation('getWaterTankLevel', Ice.OperationMode.Idempotent, Ice.OperationMode.Idempotent, False, None, (), (), (), ((), IcePy._t_int, False, 0), ())
     AirPurifierWithHumidifier._op_refillTank = IcePy.Operation('refillTank', Ice.OperationMode.Idempotent, Ice.OperationMode.Idempotent, False, None, (), (), (), None, ())
-    AirPurifierWithHumidifier._op_turnOnHumidifierMode = IcePy.Operation('turnOnHumidifierMode', Ice.OperationMode.Idempotent, Ice.OperationMode.Idempotent, False, None, (), (), (), None, ())
+    AirPurifierWithHumidifier._op_turnOnHumidifierMode = IcePy.Operation('turnOnHumidifierMode', Ice.OperationMode.Idempotent, Ice.OperationMode.Idempotent, False, None, (), (), (), None, (_M_airPurifierController._t_EmptyWaterTankException,))
     AirPurifierWithHumidifier._op_turnOffHumidifierMode = IcePy.Operation('turnOffHumidifierMode', Ice.OperationMode.Idempotent, Ice.OperationMode.Idempotent, False, None, (), (), (), None, ())
     AirPurifierWithHumidifier._op_isHumidifierTurnedOn = IcePy.Operation('isHumidifierTurnedOn', Ice.OperationMode.Idempotent, Ice.OperationMode.Idempotent, False, None, (), (), (), ((), IcePy._t_bool, False, 0), ())
 

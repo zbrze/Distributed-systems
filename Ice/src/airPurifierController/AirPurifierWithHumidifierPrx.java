@@ -18,13 +18,26 @@ package airPurifierController;
 public interface AirPurifierWithHumidifierPrx extends AirPurifierPrx
 {
     default int getHumidityPercentage()
+        throws TurnedOffException
     {
         return getHumidityPercentage(com.zeroc.Ice.ObjectPrx.noExplicitContext);
     }
 
     default int getHumidityPercentage(java.util.Map<String, String> context)
+        throws TurnedOffException
     {
-        return _iceI_getHumidityPercentageAsync(context, true).waitForResponse();
+        try
+        {
+            return _iceI_getHumidityPercentageAsync(context, true).waitForResponseOrUserEx();
+        }
+        catch(TurnedOffException ex)
+        {
+            throw ex;
+        }
+        catch(com.zeroc.Ice.UserException ex)
+        {
+            throw new com.zeroc.Ice.UnknownUserException(ex.ice_id(), ex);
+        }
     }
 
     default java.util.concurrent.CompletableFuture<java.lang.Integer> getHumidityPercentageAsync()
@@ -45,7 +58,7 @@ public interface AirPurifierWithHumidifierPrx extends AirPurifierPrx
      **/
     default com.zeroc.IceInternal.OutgoingAsync<java.lang.Integer> _iceI_getHumidityPercentageAsync(java.util.Map<String, String> context, boolean sync)
     {
-        com.zeroc.IceInternal.OutgoingAsync<java.lang.Integer> f = new com.zeroc.IceInternal.OutgoingAsync<>(this, "getHumidityPercentage", com.zeroc.Ice.OperationMode.Idempotent, sync, null);
+        com.zeroc.IceInternal.OutgoingAsync<java.lang.Integer> f = new com.zeroc.IceInternal.OutgoingAsync<>(this, "getHumidityPercentage", com.zeroc.Ice.OperationMode.Idempotent, sync, _iceE_getHumidityPercentage);
         f.invoke(true, context, null, null, istr -> {
                      int ret;
                      ret = istr.readInt();
@@ -53,6 +66,12 @@ public interface AirPurifierWithHumidifierPrx extends AirPurifierPrx
                  });
         return f;
     }
+
+    /** @hidden */
+    static final Class<?>[] _iceE_getHumidityPercentage =
+    {
+        TurnedOffException.class
+    };
 
     default int getWaterTankLevel()
     {
@@ -125,13 +144,26 @@ public interface AirPurifierWithHumidifierPrx extends AirPurifierPrx
     }
 
     default void turnOnHumidifierMode()
+        throws EmptyWaterTankException
     {
         turnOnHumidifierMode(com.zeroc.Ice.ObjectPrx.noExplicitContext);
     }
 
     default void turnOnHumidifierMode(java.util.Map<String, String> context)
+        throws EmptyWaterTankException
     {
-        _iceI_turnOnHumidifierModeAsync(context, true).waitForResponse();
+        try
+        {
+            _iceI_turnOnHumidifierModeAsync(context, true).waitForResponseOrUserEx();
+        }
+        catch(EmptyWaterTankException ex)
+        {
+            throw ex;
+        }
+        catch(com.zeroc.Ice.UserException ex)
+        {
+            throw new com.zeroc.Ice.UnknownUserException(ex.ice_id(), ex);
+        }
     }
 
     default java.util.concurrent.CompletableFuture<Void> turnOnHumidifierModeAsync()
@@ -152,10 +184,16 @@ public interface AirPurifierWithHumidifierPrx extends AirPurifierPrx
      **/
     default com.zeroc.IceInternal.OutgoingAsync<Void> _iceI_turnOnHumidifierModeAsync(java.util.Map<String, String> context, boolean sync)
     {
-        com.zeroc.IceInternal.OutgoingAsync<Void> f = new com.zeroc.IceInternal.OutgoingAsync<>(this, "turnOnHumidifierMode", com.zeroc.Ice.OperationMode.Idempotent, sync, null);
-        f.invoke(false, context, null, null, null);
+        com.zeroc.IceInternal.OutgoingAsync<Void> f = new com.zeroc.IceInternal.OutgoingAsync<>(this, "turnOnHumidifierMode", com.zeroc.Ice.OperationMode.Idempotent, sync, _iceE_turnOnHumidifierMode);
+        f.invoke(true, context, null, null, null);
         return f;
     }
+
+    /** @hidden */
+    static final Class<?>[] _iceE_turnOnHumidifierMode =
+    {
+        EmptyWaterTankException.class
+    };
 
     default void turnOffHumidifierMode()
     {
